@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/black">
+    android:background="@android:color/transparent">
 
     <TextView
         android:id="@+id/person_item_name"
