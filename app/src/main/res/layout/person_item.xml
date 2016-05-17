@@ -3,40 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent">
+    android:layout_margin="18dp"
+    android:background="@drawable/person_item_border"
+    android:padding="18dp"
+    tools:background="@android:color/darker_gray">
 
     <TextView
         android:id="@+id/person_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:text="Luke Skywalker" />
 
-    <TextView
-        android:id="@+id/person_item_date"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/person_item_name"
-        android:textColor="@android:color/white"
-        tools:text="23 BBY" />
+        android:layout_marginTop="12dp">
 
-    <TextView
-        android:id="@+id/person_item_height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:textColor="@android:color/white"
-        android:padding="12dp"
-        tools:text="180 cm" />
+        <TextView
+            android:id="@+id/person_item_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textColor="@android:color/white"
+            tools:text="180 cm" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_below="@id/person_item_date"
-        android:background="@android:color/black" />
+        <TextView
+            android:id="@+id/person_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            tools:text="23 BBY" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
