@@ -20,24 +20,110 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/person_item_height_date"
         android:layout_height="wrap_content"
         android:layout_below="@id/person_item_name"
         android:layout_marginTop="12dp">
 
-        <TextView
-            android:id="@+id/person_item_height"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:textColor="@android:color/white"
-            tools:text="180 cm" />
+            android:layout_alignParentEnd="true">
 
-        <TextView
-            android:id="@+id/person_item_date"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/height_label"
+                android:textColor="@color/colorItemBorder"
+                android:layout_marginRight="10dp"
+                android:id="@+id/height_label"/>
+
+            <TextView
+                android:id="@+id/person_item_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textColor="@android:color/white"
+                tools:text="180 cm" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/date_label"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorItemBorder"
+                android:id="@+id/date_label" />
+
+            <TextView
+                android:id="@+id/person_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                tools:text="23 BBY" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/person_item_gender_mass"
+        android:layout_below="@id/person_item_height_date"
+        android:layout_marginTop="12dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            tools:text="23 BBY" />
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorItemBorder"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/mass_label"
+                android:id="@+id/mass_label" />
+
+            <TextView
+                android:id="@+id/person_item_mass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                tools:text="50 kg" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorItemBorder"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/hair_label"
+                android:id="@+id/hair_color_label" />
+
+            <TextView
+                android:id="@+id/person_hair_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                tools:text="blond" />
+        </LinearLayout>
 
     </RelativeLayout>
 

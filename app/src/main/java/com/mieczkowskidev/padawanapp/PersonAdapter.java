@@ -30,6 +30,9 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
     public void onBindViewHolder(PersonViewHolder holder, int position) {
         holder.name.setText(personList.get(position).name);
         holder.date.setText(personList.get(position).birth_year);
+        holder.hairColor.setText(personList.get(position).hair_color);
+        String mass = personList.get(position).mass + " kg";
+        holder.mass.setText(mass);
         String height = personList.get(position).height + " cm";
         holder.height.setText(height);
     }
@@ -41,7 +44,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
 
     public static class PersonViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, date, height;
+        TextView name, date, height, mass, hairColor;
 
         public PersonViewHolder(View itemView) {
             super(itemView);
@@ -49,6 +52,8 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
             name = (TextView) itemView.findViewById(R.id.person_item_name);
             date = (TextView) itemView.findViewById(R.id.person_item_date);
             height = (TextView) itemView.findViewById(R.id.person_item_height);
+            mass = (TextView) itemView.findViewById(R.id.person_item_mass);
+            hairColor = (TextView) itemView.findViewById(R.id.person_hair_color);
         }
     }
 }

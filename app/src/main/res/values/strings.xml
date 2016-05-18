@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Padawan App</string>
+    <string name="height_label">HEIGHT:</string>
+    <string name="mass_label">MASS:</string>
+    <string name="date_label">DATE:</string>
+    <string name="hair_label">HAIR COLOR:</string>
 </resources>
