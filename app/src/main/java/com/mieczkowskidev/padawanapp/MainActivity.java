@@ -9,10 +9,16 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,43 +49,36 @@ public class MainActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
         SwapiService swapiService = retrofit.create(SwapiService.class);
 
-        swapiService.getPeople().enqueue(new Callback<ResultsResponse>() {
-            @Override
-            public void onResponse(Call<ResultsResponse> call, final Response<ResultsResponse> response) {
+        swapiService.getPersonList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<MainResponse>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
 
-                if (response.body().results != null && !response.body().results.isEmpty()) {
-
-                    Log.d(TAG, "onResponse() " + response.body().results.size());
-                    Log.d(TAG, "onResponse() INFO " + call.request().url());
-
-                    for (Person person : response.body().results) {
-                        Log.d(TAG, "onResponse person: " + person.name);
                     }
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            prepareRecyclerView(response.body().results);
-                        }
-                    });
-                } else {
-                    Log.e(TAG, "onResponse() list is empty or null :(");
-                }
+                    @Override
+                    public void onSuccess(@NonNull MainResponse mainResponse) {
+                        prepareRecyclerView(mainResponse.results);
+                    }
 
-            }
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e(TAG, "onResponse() list is empty or null :(");
 
-            @Override
-            public void onFailure(Call<ResultsResponse> call, Throwable t) {
-                Log.e(TAG, "onFailure()", t);
-            }
-        });
+                    }
+                });
+
     }
 
     private void prepareRecyclerView(List<Person> personList) {
+        Log.d(TAG, "prepareRecyclerView()");
 
         PersonAdapter personAdapter = new PersonAdapter(personList);
 
